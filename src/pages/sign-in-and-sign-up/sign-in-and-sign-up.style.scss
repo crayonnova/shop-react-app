@@ -1,0 +1,12 @@
+.sign-in-and-sign-out{
+    display: flex;
+    flex-direction: row;
+}
+@media screen and (max-width : 765px){
+    .sign-in-and-sign-out{
+        flex-direction: column;
+        .sign-in,.sign-up{
+            width: 100%;
+        }
+    }
+}

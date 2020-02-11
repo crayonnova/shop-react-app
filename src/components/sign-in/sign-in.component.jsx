@@ -26,8 +26,7 @@ class SignIn extends Component {
             })
         })
         .catch(message => {console.log(message);})
-       
-
+    
     }
     handleChange = (e) => {
         const {name,value} = e.target

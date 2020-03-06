@@ -23,16 +23,17 @@ export default class SignUp extends Component {
         }
 
         try{
-            const { user } = await auth.createUserWithEmailAndPassword(email,password);
-        
+            const user  = await auth.createUserWithEmailAndPassword(email,password); //get auth
+            console.log(user);
 
             createUserProfileDocument(user, {displayName});
-            this.setState({
+
+            this.setState({             //clean the state
                 displayName : '',
                 email : '',
                 password : '',
                 confirmPassword : ''
-            });
+            })
 
         }catch(error) { 
             console.log(error);

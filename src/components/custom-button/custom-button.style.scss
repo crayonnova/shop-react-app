@@ -16,6 +16,9 @@
     border: none;
     cursor: pointer;
     outline: none;
+    display: flex;
+    justify-content: center;
+
     &.google-btn{
       background-color: blue;
     }

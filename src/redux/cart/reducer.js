@@ -1,4 +1,5 @@
 import types from './types';
+import {addToCart} from './card_util'
 
 const INITITAL_STATE =  {
     isHidden : true,
@@ -15,10 +16,7 @@ const reducer = (state = INITITAL_STATE, action ) => {
         case types.ADD_ITEM : 
             return {
                 ...state,
-                cartItems : [
-                    ...state.cartItems,
-                    action.payload
-                ]
+                cartItems : addToCart(state.cartItems,action.payload)
             }
         default:
             return state;

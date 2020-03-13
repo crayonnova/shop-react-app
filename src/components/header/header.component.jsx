@@ -4,9 +4,14 @@ import { auth } from '../../firebase/firebase.utils';
 import {Link} from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import {connect} from 'react-redux';
+import { createStructuredSelector } from "reselect";
+import { selectIsHidden } from "../../redux/cart/CartSelector";
+import { selectCurrentUser } from '../../redux/user/UserSelect';
+
 import ShoppingCart from './../cart/cart'
 import CardDropdown from './../card-dropdown/card-dropdown.comp'
 import './header.style.scss'
+
 const Header = ({currentUser, isHidden}) => {
     return (
         <div className="header">
@@ -37,13 +42,11 @@ const Header = ({currentUser, isHidden}) => {
     )
 }
 
-const mapStateToProps = state =>{ 
-    console.log(state) 
-    return {
-    currentUser     : state.user.currentUser,
-    isHidden        : state.cart.isHidden
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    currentUser : selectCurrentUser,
+    isHidden : selectIsHidden
+})
+
 
 // destructure in parameter
     // const mapStateToProps = ( { user : {currentUser}, cart : {isHidden} }) =>{ 

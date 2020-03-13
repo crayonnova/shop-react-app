@@ -2,13 +2,22 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 //Switch is used to wrap the link and able run one route at a time
 //Link is used to replace <a> tage with  to='route' 
-import HomePage from './pages/home-page/homepage.component';
 import './App.css';
-import ShopPage from './pages/shop/shop-page.component';
-import Header from './components/header/header.component';
-import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 
+// pages
+import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import HomePage from './pages/home-page/homepage.component';
+import ShopPage from './pages/shop/shop-page.component';
+import Checkout from './pages/checkout/checkout.component'
+
+// components
+import Header from './components/header/header.component';
+
+// authentication
+import { auth,createUserProfileDocument } from './firebase/firebase.utils';
+import { selectCurrentUser } from './redux/user/UserSelect'
+
+// redux
 import {connect} from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -29,7 +38,7 @@ class App extends React.Component {
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      console.count('Auth watcher')
+      // console.count('Auth watcher')
       // console.log('auth change work!',userAuth)
      if(userAuth){
       // console.log('there is auth')
@@ -37,7 +46,6 @@ class App extends React.Component {
         
         
       userRef.onSnapshot(snapShot => {
-        console.log(snapShot);
 
         setCurrentUser({
           id : snapShot.id,
@@ -62,6 +70,7 @@ class App extends React.Component {
           <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/shop" component={ShopPage} />
+              <Route path="/checkout" component={Checkout} />
               <Route exact path="/account" render={ () => this.props.currentUser? (<Redirect to='/'/>) : (<SignInAndSignUp />) } />
               <Route exact component={NotFound} />
 
@@ -69,10 +78,11 @@ class App extends React.Component {
           </div>)
 }
 }
-const mapStateToProps = (state) =>
-  ({
-    currentUser : state.user.currentUser
-  })
+const mapStateToProps = (state) =>{
+  return {
+    currentUser : selectCurrentUser(state)
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser : user => dispatch(setCurrentUser(user))

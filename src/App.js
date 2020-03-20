@@ -29,7 +29,6 @@ return (
 
 class App extends React.Component {
 
-
   unsubscribeFromAuth = null;
   
   componentDidMount() { 
@@ -73,6 +72,7 @@ class App extends React.Component {
               <Route path="/checkout" component={Checkout} />
               <Route exact path="/account" render={ () => this.props.currentUser? (<Redirect to='/'/>) : (<SignInAndSignUp />) } />
               <Route exact component={NotFound} />
+
 
           </Switch>
           </div>)

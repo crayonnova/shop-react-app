@@ -23,7 +23,8 @@ const reducer = (state = INITITAL_STATE, action ) => {
                 ...state,
                 cartItems : removeItemFromCart(state.cartItems,action.payload)
             }
-        case types.CHANGE_ITEM :
+        case types.CHANGE_QUANTITY :
+            // console.log('this is payload ',action.payload);
             return {
                 ...state,
                 cartItems : ChangeItem(state.cartItems,action.payload.id,action.payload.amount)

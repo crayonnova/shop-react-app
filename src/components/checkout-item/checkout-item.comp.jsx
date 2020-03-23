@@ -28,7 +28,7 @@ const CheckoutItem = ({item: {id,name,imageUrl,price,quantity},removeItem,change
 const mapDispatchToProps = dispatch => {
     return {
         removeItem : (item) => dispatch(RemoveItem(item)),
-        changeQuantity : (amount) => dispatch(ChangeQuantity(amount))
+        changeQuantity : (id,amount) => dispatch(ChangeQuantity(id,amount))
     }
 }
 export default connect(null,mapDispatchToProps)(CheckoutItem)

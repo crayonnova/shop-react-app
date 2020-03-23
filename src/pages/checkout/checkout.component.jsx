@@ -2,9 +2,11 @@ import React from 'react'
 import './checkout.style.scss'
 import {connect} from 'react-redux'
 import {selectCartItems,selectCartTotal} from './../../redux/cart/CartSelector'
-
+import {Link} from 'react-router-dom'
 import CheckoutItem from './../../components/checkout-item/checkout-item.comp'
+import { withRouter } from 'react-router-dom'
 const Checkout = (props) => {
+    console.log('this is props',props);
     const {cartItems,total} = props;
 
     return (
@@ -29,19 +31,20 @@ const Checkout = (props) => {
             </div>
             {
                 (cartItems.length  === 0)?
-                    <h1>Your cart is empty</h1>
+                    <h1 className='empty-message'>No item yet <Link to='/shop'>continue shopping</Link> </h1>
                     :
                 cartItems.map( (item,index) => (
                     <CheckoutItem key={index} item={item} />
                 ))
             }
-           
+           { cartItems.length === 0 ? null: 
             <div className='total'>
                 Total : $
                 {
                     total
                 }
             </div>
+            }
         </div>
     )
 }
@@ -54,4 +57,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps,null)(Checkout);
+export default withRouter(connect(mapStateToProps,null)(Checkout))

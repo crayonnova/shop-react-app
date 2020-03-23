@@ -18,7 +18,10 @@ export const RemoveItem = id => ({
     payload : id
 })
 
-export const ChangeQuantity = (id,amount) => ({
+export const ChangeQuantity = (id,amount) => 
+{
+    // console.log({id,amount})
+    return {    
     type : types.CHANGE_QUANTITY,
     payload : {id,amount}
-})
+}}

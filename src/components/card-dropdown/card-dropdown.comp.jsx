@@ -9,8 +9,9 @@ import {withRouter} from 'react-router-dom'
 
 import './card-dropdown.style.scss'
 
-const CardDropdown = (props) => {
-        const {cartItems,history,ToggleCartDropdown} = props;
+const CardDropdown = ({cartItems,history,dispatch}) => {
+        // const {cartItems,history,ToggleCartDropdown} = props;
+        
         return (
         <div className='cart-dropdown'>
             <div className='cart-items'>
@@ -25,16 +26,11 @@ const CardDropdown = (props) => {
                 }
                 
             </div>
-                <CustomeButton onClick={ () => { history.push(`checkout`); ToggleCartDropdown()} } label='CHECKOUT'></CustomeButton>
+                <CustomeButton onClick={ () => { history.push(`checkout`); dispatch(ToggleCartDropdown())} } label='CHECKOUT'></CustomeButton>
         </div>)
     
 }
-    const mapDispatchToProps = dispatch => {
-        return {
-            ToggleCartDropdown : () => dispatch(ToggleCartDropdown()) 
-        }
-    }
 
     const mapStateToProps  = createStructuredSelector({ cartItems : selectCartItems })
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CardDropdown));
+export default withRouter(connect(mapStateToProps,null)(CardDropdown));

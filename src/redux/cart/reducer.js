@@ -1,5 +1,5 @@
 import types from './types';
-import {addToCart} from './card_util'
+import {addToCart,removeItemFromCart,ChangeItem} from './card_util'
 
 const INITITAL_STATE =  {
     isHidden : true,
@@ -18,6 +18,17 @@ const reducer = (state = INITITAL_STATE, action ) => {
                 ...state,
                 cartItems : addToCart(state.cartItems,action.payload)
             }
+        case types.REMOVE_ITEM :
+            return {
+                ...state,
+                cartItems : removeItemFromCart(state.cartItems,action.payload)
+            }
+        case types.CHANGE_ITEM :
+            return {
+                ...state,
+                cartItems : ChangeItem(state.cartItems,action.payload.id,action.payload.amount)
+            }
+        
         default:
             return state;
     }

@@ -6,11 +6,7 @@ import {selectCartItems,selectCartTotal} from './../../redux/cart/CartSelector'
 import CheckoutItem from './../../components/checkout-item/checkout-item.comp'
 const Checkout = (props) => {
     const {cartItems,total} = props;
-    if(cartItems.length === 0){
-        console.log('it is empty');
-    }else{
-        console.log('somethign');
-    }
+
     return (
         <div className='checkout-page'>
 

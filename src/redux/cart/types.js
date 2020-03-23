@@ -1,6 +1,8 @@
 const types = {
     TOGGLE_CART_DROPDOWN : 'TOGGLE_CART_DROPDOWN',
-    ADD_ITEM : 'ADD_ITEM'
+    ADD_ITEM : 'ADD_ITEM',
+    REMOVE_ITEM : 'REMOVE_ITEM',
+    CHANGE_QUANTITY : 'CHANGE_QUANTITY'
 }
 
 export default types;

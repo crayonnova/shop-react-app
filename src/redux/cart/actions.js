@@ -13,3 +13,12 @@ export const AddItem = ( item ) => {
     }
 }
 
+export const RemoveItem = id => ({
+    type : types.REMOVE_ITEM,
+    payload : id
+})
+
+export const ChangeQuantity = (id,amount) => ({
+    type : types.CHANGE_QUANTITY,
+    payload : {id,amount}
+})

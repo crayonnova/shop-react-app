@@ -23,7 +23,20 @@
     }
   
     .quantity {
-      padding-left: 20px;
+        user-select: none;
+        display: inline-block;
+        position: relative;
+      padding-left: 0px;
+      .value{
+          margin :0px 10px;
+      }
+      .arrow{
+          cursor: pointer;
+        display: inline-block;
+        &:active{
+            transform: scale(1.1);
+        }
+      }
     }
   
     .remove-button {

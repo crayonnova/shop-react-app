@@ -1,15 +1,16 @@
 import firebase from 'firebase'
-
-
+import dotenv from 'dotenv';
+dotenv.config();
+console.log(process.env)
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  apiKey: 'AIzaSyBmZdhOSQFpckEi219UpEzn0G3bXKEznRA',
+  authDomain: 'hyper-app-1557d.firebaseapp.com',
+  databaseURL: 'https://hyper-app-1557d.firebaseio.com',
+  projectId: 'hyper-app-1557d',
+  storageBucket: 'hyper-app-1557d.appspot.com',
+  messagingSenderId: '5026641576',
+  appId: '1:50266415766:web:d27110e3a346a067a058b7',
+  measurementId: 'G-VGXYFBXXCK'
 };
 
  firebase.initializeApp(config); //config
